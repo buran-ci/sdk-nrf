@@ -22,7 +22,7 @@ pipeline {
        string(name: 'jsonstr_CI_STATE', description: 'Default State if no upstream job', defaultValue: CI_STATE.CFG.INPUT_STATE_STR)
        choice(name: 'CRON', choices: ['COMMIT', 'NIGHTLY', 'WEEKLY'], description: 'Cron Test Phase')
   }
-  agent { label CI_STATE.CFG.AGENT_LABELS }
+  agent { label 'node-build-02' }
 
   options {
     parallelsAlwaysFailFast()
@@ -51,7 +51,7 @@ pipeline {
     stage('Specification') { steps { script {
       def TestStages = [:]
       TestStages["compliance"] = {
-        node (CI_STATE.CFG.AGENT_LABELS) {
+        node ('node-build-02') {
           stage('Compliance Test'){
             println "Using Node:$NODE_NAME"
             docker.image("$CI_STATE.CFG.DOCKER_REG/$CI_STATE.CFG.IMAGE_TAG").inside {
@@ -177,7 +177,7 @@ pipeline {
 
 def generateParallelStage(platform, compiler, JOB_NAME, CI_STATE, SANITYCHECK_OPTIONS_COMMON) {
   return {
-    node (CI_STATE.CFG.AGENT_LABELS) {
+    node ('node-build-02') {
       stage('.'){
         println "Using Node:$NODE_NAME"
         docker.image("$CI_STATE.CFG.DOCKER_REG/$CI_STATE.CFG.IMAGE_TAG").inside {

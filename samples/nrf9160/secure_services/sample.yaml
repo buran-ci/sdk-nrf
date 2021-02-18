@@ -2,7 +2,6 @@ sample:
   name: secure services
 tests:
   samples.nrf9160.secure_services.default:
-    platform_allow: nrf9160dk_nrf9160ns
     tags: ci_build
     harness: console
     harness_config:
@@ -34,7 +33,6 @@ tests:
         - "Reboot in 5 seconds."
         - "Secure Services example."
   samples.nrf5340.secure_services.default:
-    platform_allow: nrf5340pdk_nrf5340_cpuappns
     tags: ci_build
     harness: console
     harness_config:
@@ -50,7 +48,6 @@ tests:
         - "Secure Services example."
 
   samples.nrf9160.secure_services.bootloaders:
-    platform_allow: nrf9160dk_nrf9160ns
     extra_args: CONFIG_BOOTLOADER_MCUBOOT=y CONFIG_SECURE_BOOT=y CONFIG_SPM_SERVICE_PREVALIDATE=y mcuboot_CONFIG_EXT_API_PROVIDE_EXT_API_ENABLED=y CONFIG_SPM_SERVICE_S0_ACTIVE=y
     harness: console
     harness_config:
@@ -84,7 +81,6 @@ tests:
         - "Secure Services example."
 
   samples.nrf5340.secure_services.bootloaders:
-    platform_allow: nrf5340pdk_nrf5340_cpuappns
     extra_args: CONFIG_BOOTLOADER_MCUBOOT=y CONFIG_SECURE_BOOT=y CONFIG_SPM_SERVICE_PREVALIDATE=y mcuboot_CONFIG_EXT_API_PROVIDE_EXT_API_ENABLED=y
     harness: console
     harness_config:
@@ -102,7 +98,6 @@ tests:
         - "Secure Services example."
 
   samples.nrf9160.secure_services.b0_mcuboot:
-    platform_allow: nrf9160dk_nrf9160ns
     extra_args: OVERLAY_CONFIG="b0_mcuboot_overlay.conf"
     build_only: true
     build_on_all: true

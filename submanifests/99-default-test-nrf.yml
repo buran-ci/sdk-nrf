@@ -1,0 +1,16 @@
+manifest:
+
+  remotes:
+    - name: ncs-test
+      url-base: https://projecttools.nordicsemi.no/bitbucket/scm/ncs-test
+
+
+  projects:
+    # NRF test repositories
+    - name: test_nrf
+      remote: ncs-test
+      repo-path: test-fw-nrfconnect-nrf
+      revision: master-prd
+      import:
+        path-prefix: test_nrf
+

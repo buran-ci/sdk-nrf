@@ -37,27 +37,17 @@ manifest:
       url-base: https://github.com/PelionIoT
     - name: memfault
       url-base: https://github.com/memfault
-    - name: ncs-test
-      url-base: https://projecttools.nordicsemi.no/bitbucket/scm/ncs-test
 
   # If not otherwise specified, the projects below should be obtained
   # from the ncs remote.
   defaults:
     remote: ncs
 
-  group-filter: [-homekit, -nrf-802154, -find-my, -test]
+  group-filter: [-homekit, -nrf-802154, -find-my]
 
   # "projects" is a list of git repositories which make up the NCS
   # source code.
   projects:
-
-    # NRF test repositories
-    - name: test_nrf
-      remote: ncs-test
-      repo-path: test-fw-nrfconnect-nrf
-      revision: master-prd
-      import:
-        path-prefix: test_nrf
 
     # The Zephyr RTOS fork in the NCS, along with the subset of its
     # modules which NCS imports directly.
@@ -199,3 +189,5 @@ manifest:
     # This line configures west extensions which are currently only
     # for internal use by NCS maintainers.
     west-commands: scripts/west-commands.yml
+
+    import: submanifests

@@ -1,5 +1,5 @@
-@Library("CI_LIB") _
+@Library("CI-INIT") _
 
-def pipeline = new ncs.sdk_nrf.Main()
+def init = new ncs.init.Main()
 
-pipeline.run(JOB_NAME)
+init.run(JOB_NAME)
